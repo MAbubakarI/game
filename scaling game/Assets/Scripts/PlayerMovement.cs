@@ -22,7 +22,7 @@ public class NPlayerMovement : MonoBehaviour
 
         // face direction of movement
         if (ydir > 0.01f)
-            transform.localScale = Vector3.one;
+            transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
         else if (ydir > 0.01f)
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
 
