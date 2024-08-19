@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class camera : MonoBehaviour
+public class CamMovement : MonoBehaviour
 {
-     public GameObject Camera;
-    public GameObject player;
+
+    public Transform player;
+    public Vector3 offset;
+    public float speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +18,6 @@ public class camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-  
+        transform.position = Vector3.Lerp(transform.position, player.position+offset, speed);
     }
 }
