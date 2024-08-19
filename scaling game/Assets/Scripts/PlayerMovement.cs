@@ -3,6 +3,7 @@ using UnityEngine;
 public class NPlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float jumpPower;
     [SerializeField] private LayerMask groundLayer;
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
@@ -28,7 +29,7 @@ public class NPlayerMovement : MonoBehaviour
 
         // jump
         if (Input.GetKey(KeyCode.Space) && isGrounded())
-            body.velocity = new Vector2(body.velocity.x, speed);
+            body.velocity = new Vector2(body.velocity.x, jumpPower*speed);
     }
 
     private bool isGrounded()
