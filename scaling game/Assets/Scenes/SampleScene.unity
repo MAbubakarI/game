@@ -314,6 +314,7 @@ MonoBehaviour:
   transparentPrefab: {fileID: 1742470523}
   groundPrefab: {fileID: 8220987533707887836, guid: 264ae01ebc48391469ba89ba9dcbfed6, type: 3}
   mousepos: {x: 0, y: 0}
+  size: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
