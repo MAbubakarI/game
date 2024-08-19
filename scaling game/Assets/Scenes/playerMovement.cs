@@ -57,43 +57,13 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            /**
-            if (canInteract)
-            {
-                collref = ContactList[ContactList.Count - 1];
-                carry.Push(collref);
-
-                collref.GetComponent<Rigidbody2D>().isKinematic = false;
-                collref.GetComponent<CircleCollider2D>().enabled = false;
-                collref.GetComponent<SpringJoint2D>().connectedBody = rb;
-                collref.GetComponent<SpringJoint2D>().enabled = true;
-
-                carryweight = (float)Math.Max(1, (carry.Count - carryload + 1)) / carryload;
-            }
-            else if (!canInteract && carry.Count > 0)
-            {
-                drop = carry.Pop();
-
-                Rigidbody2D droprb = drop.GetComponent<Rigidbody2D>();
-                droprb.isKinematic = true;
-                droprb.velocity = Vector3.zero;
-                droprb.angularVelocity = 0;
-                drop.GetComponent<CircleCollider2D>().enabled = true;
-                drop.GetComponent<SpringJoint2D>().enabled = false;
-
-                carryweight = (float)Math.Max(1, (carry.Count - carryload + 1)) / carryload;
-            }
-        **/
-            }
-
         // jumptimer -= 1;
 
-        if (Input.GetKey(KeyCode.D) && !IsRightone() && !IsRighttwo()) playerx += Time.deltaTime * (04 - carryweight);
-        if (Input.GetKey(KeyCode.A) && !IsLeftone() && !IsLefttwo()) playerx -= Time.deltaTime * (04 - carryweight);
+        if (Input.GetKey(KeyCode.D) && !IsRightone() && !IsRighttwo()) playerx += Time.deltaTime * 04;
+        if (Input.GetKey(KeyCode.A) && !IsLeftone() && !IsLefttwo()) playerx -= Time.deltaTime * 04;
 
         if (Input.GetKey(KeyCode.W) && !IsRoofed() && jumping == 0) jumping = 1;
+        else jumping = 0;
         if (jumping != 0)
         {
             playery += 0.2; 
@@ -110,10 +80,6 @@ public class playerMovement : MonoBehaviour
         allplayer.position = (new Vector3((float)playerx, (float)playery, 0));
         cameratransform.position = new Vector3((float)playerx, (float)playery, (int)cameraz);
         Flip();
-
-       // scoretext.text = score.ToString();
-       //// endscore.text = score.ToString();
-      //  depth.text = ((int)playery + "M");
     }
     private bool IsGrounded()
     {
@@ -162,42 +128,5 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) && faceright == true) player.localScale = new Vector3(-1, 1, 1);
         if (Input.GetKeyDown(KeyCode.D) && faceright == false) player.localScale = new Vector3(-1, 1, 1);
     }
-
-    /**
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.gameObject.name + " : " + collision.gameObject.tag);
-        if (collision.gameObject.tag.Split()[0] == "Collectable")
-        {
-            collref = collision.gameObject;
-            canInteract = true;
-            ContactList.Add(collision.gameObject);
-        }
-        else if (collision.gameObject.tag == "Score")
-        {
-            while (carry.Count > 0)
-            {
-                drop = carry.Pop();
-                score += int.Parse(drop.tag.Split('/')[1]);
-                Destroy(drop);
-            }
-        }
-        
-        else if (collision.gameObject.tag == "Battery")
-        {
-            Destroy(collision.gameObject);
-            neededscript.AddBattery();
-        }
-    
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag.Split()[0] == "Collectable")
-        {
-            ContactList.Remove(collision.gameObject);
-            if (ContactList.Count == 0) canInteract = false;
-        }
-    }
-    **/
 }
 
