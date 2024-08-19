@@ -14,27 +14,31 @@ public class NPlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        body.velocity = new Vector2(horizontalInput*speed, body.velocity.y);
+        float ydir = Input.GetAxis("Horizontal");
 
-        if (horizontalInput > 0.01f)
+        // horizontal movement
+        body.velocity = new Vector2(ydir*speed, body.velocity.y);
+
+        // face direction of movement
+        if (ydir > 0.01f)
             transform.localScale = Vector3.one;
-        else if (horizontalInput > 0.01f)
+        else if (ydir > 0.01f)
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
 
+        // jump
         if (Input.GetKey(KeyCode.Space) && grounded)
-            Jump();
-    }
-
-    private void Jump()
-    {
-        body.velocity = new Vector2(body.velocity.x, speed);
-        grounded = false;
+            body.velocity = new Vector2(body.velocity.x, speed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
             grounded = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+            grounded = false;
     }
 }
