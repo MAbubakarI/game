@@ -18,8 +18,11 @@ public class spawning : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        size += Input.mouseScrollDelta.y;
+    {   if (Input.GetMouseButtonDown(1))
+
+        {
+            size += Input.mouseScrollDelta.y;
+        }
         if (size < 1) size = 1;
         if (size > 10) size = 10;
         transparentPrefab.transform.localScale = new Vector3 (size, size, 1);
