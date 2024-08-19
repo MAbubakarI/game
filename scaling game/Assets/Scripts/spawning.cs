@@ -18,7 +18,7 @@ public class spawning : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   if (Input.GetMouseButton(1))
+    {   if (!Input.GetMouseButton(1))
 
         {
             size += Input.mouseScrollDelta.y;
