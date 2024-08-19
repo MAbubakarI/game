@@ -28,6 +28,6 @@ public class CamMovement : MonoBehaviour
         if (size < 5) size = 5;
         if (size > 20) size = 20;
         m_OrthographicCamera.orthographicSize = size;
-        transform.position = Vector3.Lerp(transform.position, player.position+offset, speed);
+        transform.position = Vector3.Lerp(transform.position, player.position+offset, speed*Time.deltaTime);
     }
 }
