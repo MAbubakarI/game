@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class spawning : MonoBehaviour
 {
-
+    public GameObject transparentPrefab;
     public GameObject groundPrefab;
     public Vector2 mousepos;
 
