@@ -18,7 +18,7 @@ public class spawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousepos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);//new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
