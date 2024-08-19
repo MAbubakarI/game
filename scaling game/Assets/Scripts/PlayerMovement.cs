@@ -3,13 +3,14 @@ using UnityEngine;
 public class NPlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private LayerMask groundLayer;
     private Rigidbody2D body;
-    private bool grounded;
+    private BoxCollider2D boxCollider;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
-
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -21,24 +22,19 @@ public class NPlayerMovement : MonoBehaviour
 
         // face direction of movement
         if (ydir > 0.01f)
-            transform.localScale = Vector3.one;
+            transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
         else if (ydir > 0.01f)
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
 
         // jump
-        if (Input.GetKey(KeyCode.Space) && grounded)
+        if (Input.GetKey(KeyCode.Space) && isGrounded())
             body.velocity = new Vector2(body.velocity.x, speed);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private bool isGrounded()
     {
-        if (collision.gameObject.tag == "Ground")
-            grounded = true;
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-            grounded = false;
+        // remember that 0 vector2.down is assuming boxcollider is straight and no rotation
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        return raycastHit.collider != null;
     }
 }

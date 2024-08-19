@@ -180,7 +180,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 246009204}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: aa3d54f814fad1646b483f4a5cb9479f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -296,6 +296,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &246009210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,9 +510,9 @@ GameObject:
   - component: {fileID: 1809931756}
   - component: {fileID: 1809931758}
   - component: {fileID: 1809931757}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (1)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -637,9 +640,9 @@ GameObject:
   - component: {fileID: 1994607441}
   - component: {fileID: 1994607440}
   - component: {fileID: 1994607439}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -765,9 +768,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2100715919}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundLayer
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
