@@ -18,7 +18,10 @@ public class spawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);//new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+
+        transparentPrefab.transform.position = mousepos;
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
