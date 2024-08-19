@@ -36,7 +36,7 @@ public class playerMovement : MonoBehaviour
 //
 
     [SerializeField] private LayerMask groundlayer;
-
+    double jumping = 0;
     bool canInteract = false;
     GameObject collref;
     public Stack<GameObject> carry = new Stack<GameObject>();
@@ -92,8 +92,15 @@ public class playerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D) && !IsRightone() && !IsRighttwo()) playerx += Time.deltaTime * (04 - carryweight);
         if (Input.GetKey(KeyCode.A) && !IsLeftone() && !IsLefttwo()) playerx -= Time.deltaTime * (04 - carryweight);
-        if (Input.GetKey(KeyCode.W) && !IsRoofed()) playery += Time.deltaTime * (05 - carryweight);
-        if (Input.GetKey(KeyCode.Y)) Debug.Log(carryweight);
+
+        if (Input.GetKey(KeyCode.W) && !IsRoofed() && jumping == 0) jumping = 1;
+        if (jumping != 0)
+        {
+            playery += 0.2; 
+            jumping -= 0.2;
+        }
+       // if (Input.GetKey(KeyCode.Y)) Debug.Log(carryweight);
+
         if (!IsGrounded()  && Input.GetKey(KeyCode.S)) { playery -= 4 * Time.deltaTime; }
         else if (!IsGrounded()) playery -= 1.25 * Time.deltaTime;
 
