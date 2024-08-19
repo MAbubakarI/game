@@ -423,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 246009208}
   offset: {x: 0, y: 0, z: -5}
-  speed: 1
+  speed: 3
   size: 0
   m_OrthographicCamera: {fileID: 519420031}
 --- !u!1001 &553294271
