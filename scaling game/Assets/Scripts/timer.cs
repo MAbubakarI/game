@@ -14,6 +14,10 @@ public class timer : MonoBehaviour
 
     public TMP_Text Highscore2;
     public TMP_Text Score;
+    public int winheight = 500;//game ends(can change depending on map height)
+    public Transform player;
+    public bool win;
+    public GameObject winMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +33,15 @@ public class timer : MonoBehaviour
             clock += Time.deltaTime;
         }
         Score.text = ("Score: "+clock+"s");
+
+        if (player.position.y>winheight)
+        { paused = true;
+            win = true;
+        }
+        if (win == true)
+        {
+            winMenu.SetActive(true);
+        }
     }
 
     public void Pause() { paused = true; }
@@ -40,6 +53,10 @@ public class timer : MonoBehaviour
             Highscore2.text = ("Current Highscore: " + highscore + "s");
         }
         clock = 0;
+
+        //anthony will do other reset stuff to reset map
+
+
     }
 
 }
