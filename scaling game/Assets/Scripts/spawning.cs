@@ -12,7 +12,7 @@ public class spawning : MonoBehaviour
     public bool onMenu;
 
     public bool win;
-    public int winheight = 500;//game ends(can change depending on map height)
+    public int winheight = 50;//game ends(can change depending on map height)
     public Transform player;
 
     // Start is called before the first frame update

@@ -15,7 +15,7 @@ public class timer : MonoBehaviour
 
     public TMP_Text Highscore2;
     public TMP_Text Score;
-    public int winheight = 500;//game ends(can change depending on map height)
+    public int winheight = 50;//game ends(can change depending on map height)
     public Transform player;
     public bool win;
     public GameObject winMenu;
