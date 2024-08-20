@@ -4,13 +4,15 @@ public class NPlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
+    [SerializeField] private float jumpHangTimeThreshold;
+    [SerializeField] private float jumpHangTimeMult;
     [SerializeField] private LayerMask groundLayer;
-    private Rigidbody2D body;
+    private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
 
     private void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
@@ -19,7 +21,7 @@ public class NPlayerMovement : MonoBehaviour
         float ydir = Input.GetAxis("Horizontal");
 
         // horizontal movement
-        body.velocity = new Vector2(ydir*speed, body.velocity.y);
+        rb.velocity = new Vector2(ydir*speed, rb.velocity.y);
 
         // face direction of movement
         if (ydir > 0.01f)
@@ -29,7 +31,7 @@ public class NPlayerMovement : MonoBehaviour
 
         // jump
         if (Input.GetKey(KeyCode.Space) && isGrounded())
-            body.velocity = new Vector2(body.velocity.x, jumpPower*speed);
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
     }
 
     private bool isGrounded()
