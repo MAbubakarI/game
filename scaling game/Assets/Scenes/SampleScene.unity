@@ -682,12 +682,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  jumpPower: 16
+  jumpPower: 18
   jumpHangTimeThreshold: 0
   jumpHangTimeMult: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &246009210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +728,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -746,7 +749,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 200
+  m_Time: 4
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -768,18 +771,18 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0, b: 0, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
+      key2: {r: 1, g: 1, b: 1, a: 0}
+      key3: {r: 1, g: 1, b: 1, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
-      ctime3: 0
+      ctime2: 65535
+      ctime3: 65535
       ctime4: 0
       ctime5: 0
       ctime6: 0
@@ -793,7 +796,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -807,7 +810,7 @@ TrailRenderer:
   m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1
-  m_ApplyActiveColorSpace: 0
+  m_ApplyActiveColorSpace: 1
 --- !u!1 &318593596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2614,8 +2617,8 @@ Transform:
   m_GameObject: {fileID: 827057714}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.49, y: -6.42, z: -0.056347072}
-  m_LocalScale: {x: 9.779273, y: 0.21632813, z: 0.5}
+  m_LocalPosition: {x: 2, y: -6, z: 0}
+  m_LocalScale: {x: 10, y: 0.15, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2100715919}
@@ -4493,7 +4496,7 @@ Transform:
   m_GameObject: {fileID: 1809931755}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.8, y: -3.8, z: -0.056347072}
+  m_LocalPosition: {x: 13, y: -4, z: 0}
   m_LocalScale: {x: 0.78625005, y: 0.77337307, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5121,7 +5124,7 @@ Transform:
   m_GameObject: {fileID: 1994607438}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.03, y: -1.54, z: -0.056347072}
+  m_LocalPosition: {x: 20, y: -2, z: 0}
   m_LocalScale: {x: 0.901875, y: 1.668701, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
