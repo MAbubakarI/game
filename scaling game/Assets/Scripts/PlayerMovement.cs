@@ -14,6 +14,7 @@ public class NPlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
+    public bool Grounded = true;
 
     private float wallJumpCooldown = 0;
     private float horizontalInput;
@@ -58,10 +59,12 @@ public class NPlayerMovement : MonoBehaviour
     {
         if (isGrounded())
         {
+            Grounded = true;
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
         }
         else if (onWall() && !isGrounded())
         {
+            Grounded = false;
             if (horizontalInput == 0)
             {
                 rb.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
