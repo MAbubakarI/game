@@ -11,6 +11,7 @@ public class timer : MonoBehaviour
     float highscore = 0;
     bool paused = true;
     public TMP_Text Highscore;
+    public TMP_Text winscore;
 
     public TMP_Text Highscore2;
     public TMP_Text Score;
@@ -40,6 +41,7 @@ public class timer : MonoBehaviour
         }
         if (win == true)
         {
+            winscore.text = ("Finished in "+clock+"s");
             winMenu.SetActive(true);
         }
     }
@@ -48,6 +50,7 @@ public class timer : MonoBehaviour
     public void UnPause() { paused = false; }
      public void Reset()
     {
+        win = false;
         if (clock > highscore) { highscore = clock;
             Highscore.text = ("Highscore: " + highscore + "s");
             Highscore2.text = ("Current Highscore: " + highscore + "s");
