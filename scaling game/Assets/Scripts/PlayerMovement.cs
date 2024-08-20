@@ -1,3 +1,4 @@
+using UnityEditorInternal;
 using UnityEngine;
 
 public class NPlayerMovement : MonoBehaviour
@@ -12,7 +13,7 @@ public class NPlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
-    private float wallJumpCooldown;
+    private float wallJumpCooldown = 0;
 
     private void Awake()
     {
@@ -23,24 +24,44 @@ public class NPlayerMovement : MonoBehaviour
     private void Update()
     {
         float xdir = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(xdir * speed, rb.velocity.y);
 
         // face direction of movement
         if (xdir > 0.01f)
-            transform.localScale = Vector3.one;
+            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
         else if (xdir < 0.01f)
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
 
 
-        if (Input.GetKey(KeyCode.Space) && isGrounded())
-            Jump();
+        if (wallJumpCooldown > 0.2f)
+        {
+            rb.velocity = new Vector2(xdir * speed, rb.velocity.y);
 
-        print(onWall());
+            if (onWall() && !isGrounded())
+            {
+                rb.gravityScale = 0;
+                rb.velocity = Vector2.zero;
+            }
+            else
+                rb.gravityScale = 3;
+
+            if (Input.GetKey(KeyCode.Space))
+                Jump();
+        }
+        else
+            wallJumpCooldown += Time.deltaTime;
     }
 
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+        if (isGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+        }
+        else if (onWall() && !isGrounded())
+        {
+            wallJumpCooldown = 0;
+            rb.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
+        }
     }
 
     private bool isGrounded()
