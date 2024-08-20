@@ -2771,7 +2771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553159683}
   - component: {fileID: 553159684}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pixil-frame-0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3669,7 +3669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 743543895}
   - component: {fileID: 743543896}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pixil-frame-0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7048,7 +7048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1799983330}
   - component: {fileID: 1799983331}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pixil-frame-0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
