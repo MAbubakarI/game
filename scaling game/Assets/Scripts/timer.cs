@@ -41,8 +41,13 @@ public class timer : MonoBehaviour
         }
         if (win == true)
         {
+            if (clock > highscore) { highscore = clock;
+                Highscore.text = ("Highscore: " + highscore + "s");
+                Highscore2.text = ("Current Highscore: " + highscore + "s");
+            }
             winscore.text = ("Finished in "+clock+"s");
             winMenu.SetActive(true);
+            clock = 0;
         }
     }
 
@@ -51,10 +56,7 @@ public class timer : MonoBehaviour
      public void Reset()
     {
         win = false;
-        if (clock > highscore) { highscore = clock;
-            Highscore.text = ("Highscore: " + highscore + "s");
-            Highscore2.text = ("Current Highscore: " + highscore + "s");
-        }
+        
         clock = 0;
 
         //anthony will do other reset stuff to reset map
