@@ -32,9 +32,6 @@ public class NPlayerMovement : MonoBehaviour
         // jump
         if (Input.GetKey(KeyCode.Space) && isGrounded())
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-
-        if (!isGrounded() && Mathf.Abs(rb.velocity.y) < jumpHangTimeThreshold)
-            rb.gravityScale *= jumpHangTimeMult;
     }
 
     private bool isGrounded()
