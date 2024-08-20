@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -13,7 +14,9 @@ public class NPlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
+
     private float wallJumpCooldown = 0;
+    private float horizontalInput;
 
     private void Awake()
     {
@@ -23,18 +26,18 @@ public class NPlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float xdir = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");
 
         // face direction of movement
-        if (xdir > 0.01f)
+        if (horizontalInput > 0.01f)
             transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
-        else if (xdir < 0.01f)
+        else if (horizontalInput < 0.01f)
             transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
 
 
         if (wallJumpCooldown > 0.2f)
         {
-            rb.velocity = new Vector2(xdir * speed, rb.velocity.y);
+            rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
 
             if (onWall() && !isGrounded())
             {
@@ -59,8 +62,15 @@ public class NPlayerMovement : MonoBehaviour
         }
         else if (onWall() && !isGrounded())
         {
+            if (horizontalInput == 0)
+            {
+                rb.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
+                transform.localScale = new Vector2(-Mathf.Sign(transform.localScale.x)*Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            }
+            else
+                rb.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
+
             wallJumpCooldown = 0;
-            rb.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
         }
     }
 
