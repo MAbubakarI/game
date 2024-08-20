@@ -913,6 +913,10 @@ MonoBehaviour:
   groundPrefab: {fileID: 8220987533707887836, guid: 264ae01ebc48391469ba89ba9dcbfed6, type: 3}
   mousepos: {x: 0, y: 0}
   size: 0
+  onMenu: 0
+  win: 0
+  winheight: 500
+  player: {fileID: 246009208}
 --- !u!96 &246009211
 TrailRenderer:
   serializedVersion: 3
@@ -1396,6 +1400,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1729182093}
         m_TargetAssemblyTypeName: timer, Assembly-CSharp
         m_MethodName: UnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 246009210}
+        m_TargetAssemblyTypeName: spawning, Assembly-CSharp
+        m_MethodName: OffdMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3196,6 +3212,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 246009210}
+        m_TargetAssemblyTypeName: spawning, Assembly-CSharp
+        m_MethodName: ondMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &750215783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3936,6 +3964,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1729182093}
         m_TargetAssemblyTypeName: timer, Assembly-CSharp
         m_MethodName: UnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 246009210}
+        m_TargetAssemblyTypeName: spawning, Assembly-CSharp
+        m_MethodName: OffdMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
