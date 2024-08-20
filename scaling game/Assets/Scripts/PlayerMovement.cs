@@ -29,12 +29,15 @@ public class NPlayerMovement : MonoBehaviour
         else if (ydir > 0.01f)
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
 
+
+        bool isGrounded = groundCheck();
+
         // jump
-        if (Input.GetKey(KeyCode.Space) && isGrounded())
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
     }
 
-    private bool isGrounded()
+    private bool groundCheck()
     {
         // remember that 0 vector2.down is assuming boxcollider is straight and no rotation
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
